@@ -14,13 +14,13 @@
                     <h5 class="titulo">LISTADO DE FACTURAS</h5>
                     <table class="table">
                         <tbody>
-                            <tr *NgFor="let factura of listaFacturas">
-                                <td>{{ factura.NumeroDetalle }} </td>
-                                <td>{{ factura.Cantidad }}</td>
-                                <td>{{ factura.ValorTotal }}</td>
-                                <td>{{ factura.NombreCiudad }}</td>
-                                <td>{{ factura.NombreArticulo }}</td>
-                                <td>{{ factura.NumeroFactura }}</td>
+                            <tr *ngFor="let factura of listaFacturas">
+                                <td>{{ factura.numeroDetalle }} </td>
+                                <td>{{ factura.cantidad }}</td>
+                                <td>{{ factura.valorTotal }}</td>
+                                <td>{{ factura.nombreCiudad }}</td>
+                                <td>{{ factura.nombreArticulo }}</td>
+                                <td>{{ factura.numeroFactura }}</td>
                                 <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
                                 <td><i class="fa-solid fa-trash-can text-danger"></i></td>
                             </tr>
