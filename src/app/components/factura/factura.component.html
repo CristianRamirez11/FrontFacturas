@@ -1,1 +1,40 @@
-<p>factura works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="class-body text-center">
+                <h3>Sistema de gestión de CRUD de Facturas</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="titulo">LISTADO DE FACTURAS</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr *NgFor="let factura of listaFacturas">
+                                <td>{{ factura.NumeroDetalle }} </td>
+                                <td>{{ factura.Cantidad }}</td>
+                                <td>{{ factura.ValorTotal }}</td>
+                                <td>{{ factura.NombreCiudad }}</td>
+                                <td>{{ factura.NombreArticulo }}</td>
+                                <td>{{ factura.NumeroFactura }}</td>
+                                <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
+                                <td><i class="fa-solid fa-trash-can text-danger"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="titulo">AGREGAR DETALLE FACTURA</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
