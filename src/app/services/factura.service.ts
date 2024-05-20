@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FacturaService {
   private myAppUrl = 'https://localhost:44364/'; // hace referencia a la url del proyecto
-  private myApiUrl = 'api/factura/'
+  private myApiUrl = 'api/factura'
 
   constructor(private http: HttpClient) { }
 

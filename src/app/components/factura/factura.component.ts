@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { ToastrService } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { ToastrModule } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
+//import { HttpClientModule } from '@angular/common/http';
 import { FacturaService } from '../../services/factura.service';
 
 type Factura = Array<{ numeroDetalle: string; cantidad: number; valorTotal: number; nombreCiudad: string; nombreArticulo: string; numeroFactura: number}>;
@@ -14,7 +14,7 @@ type Factura = Array<{ numeroDetalle: string; cantidad: number; valorTotal: numb
 @Component({
   selector: 'app-factura',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BrowserAnimationsModule, ToastrModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './factura.component.html',
   styleUrl: './factura.component.css'
 })
@@ -29,7 +29,9 @@ export class FacturaComponent implements OnInit{
   id: number | undefined;
 
   constructor(private fb: FormBuilder,
-    private toastr: ToastrService) {
+    private _facturaService: FacturaService
+    //private toastr: ToastrService
+  ) {
     this.form = this.fb.group({
       fecha: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       cliente: ['', Validators.required],
@@ -39,10 +41,10 @@ export class FacturaComponent implements OnInit{
    }
 
   ngOnInit(): void{
-    //this.obtenerFacturas();
+    this.obtenerFacturas();
   }
 
-  /*
+  
   obtenerFacturas() {
     this._facturaService.getListFacturas().subscribe(data => {
       console.log(data);
@@ -51,7 +53,7 @@ export class FacturaComponent implements OnInit{
       console.log(error);
     })
   }
-*/
+
   guardarFactura() {
 
     const factura: any = {
