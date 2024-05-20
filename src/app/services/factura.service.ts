@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class FacturaService {
   private myAppUrl = 'https://localhost:44364/'; // hace referencia a la url del proyecto
-  private myApiUrl = 'api/factura'
+  private myApiUrl = 'api/factura/'
+  private myApiUrlDetalleFacturaPorCiudad = 'DetalleFacturaPorCiudad';
 
   constructor(private http: HttpClient) { }
 
   getListFacturas(): Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl);
+    return this.http.get(this.myAppUrl + this.myApiUrl + this.myApiUrlDetalleFacturaPorCiudad);
   }
 /*
   deleteFactura(id: number): Observable<any> {
