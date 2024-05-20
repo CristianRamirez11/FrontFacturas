@@ -27,8 +27,7 @@ export class FacturaComponent implements OnInit{
   id: number | undefined;
 
   constructor(private fb: FormBuilder,
-    private toastr: ToastrService,
-    private _tarjetaService: TarjetaService) {
+    private toastr: ToastrService) {
     this.form = this.fb.group({
       fecha: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       cliente: ['', Validators.required],
@@ -49,11 +48,11 @@ export class FacturaComponent implements OnInit{
       cantidad: this.form.get('cantidad')?.value,
       articulo: this.form.get('articulo')?.value,
     }
-
+/*
     if(this.id == undefined) {
       // Agregamos una nueva tarjeta
         this._tarjetaService.saveTarjeta(factura).subscribe(data => {
-          this.toastr.success('La tarjeta fue registrada con exito!', 'Tarjeta Registrada');
+          this.toastr.success('La factura fue registrada con exito!', 'Factura Registrada');
           this.obtenerTarjetas();
           this.form.reset();
         }, error => {
@@ -76,9 +75,31 @@ export class FacturaComponent implements OnInit{
 
     }
 
-   
+   */
   }
 
+
+  eliminarTarjeta(id: number) {
+    this._tarjetaService.deleteTarjeta(id).subscribe(data => {
+      this.toastr.error('La tarjeta fue eliminada con exito!','Tarjeta eliminada');
+      this.obtenerTarjetas();
+    }, error => {
+      console.log(error);
+    })
+
+  }
+
+  editarTarjeta(tarjeta: any) {
+    this.accion = 'Editar';
+    this.id = tarjeta.id;
+
+    this.form.patchValue({
+      titular: tarjeta.titular,
+      numeroTarjeta: tarjeta.numeroTarjeta,
+      fechaExpiracion: tarjeta.fechaExpiracion,
+      cvv: tarjeta.cvv
+    })
+  }
 
 
 }
