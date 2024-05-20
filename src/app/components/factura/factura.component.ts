@@ -37,7 +37,16 @@ export class FacturaComponent implements OnInit{
    }
 
   ngOnInit(): void{
+    this.obtenerFacturas();
+  }
 
+  obtenerFacturas() {
+    this._facturaService.getListFacturas().subscribe(data => {
+      console.log(data);
+      this.listFacturas = data;
+    }, error => {
+      console.log(error);
+    })
   }
 
   guardarFactura() {
@@ -50,10 +59,10 @@ export class FacturaComponent implements OnInit{
     }
 /*
     if(this.id == undefined) {
-      // Agregamos una nueva tarjeta
-        this._tarjetaService.saveTarjeta(factura).subscribe(data => {
+      // Agregamos una nueva factura
+        this._facturaService.saveFactura(factura).subscribe(data => {
           this.toastr.success('La factura fue registrada con exito!', 'Factura Registrada');
-          this.obtenerTarjetas();
+          this.obtenerFacturas();
           this.form.reset();
         }, error => {
           this.toastr.error('Opss.. ocurrio un error','Error')
@@ -61,14 +70,14 @@ export class FacturaComponent implements OnInit{
         })
     }else {
 
-      tarjeta.id = this.id;
-      // Editamos tarjeta
-      this._tarjetaService.updateTarjeta(this.id,tarjeta).subscribe(data => {
+      factura.id = this.id;
+      // Editamos factura
+      this._facturaService.updateFactura(this.id,factura).subscribe(data => {
         this.form.reset();
         this.accion = 'Agregar';
         this.id = undefined;
         this.toastr.info('La factura fue agregada con exito!', 'Factura ingresada');
-        this.obtenerTarjetas();
+        this.obtenerFacturas();
       }, error => {
         console.log(error);
       })
@@ -79,25 +88,25 @@ export class FacturaComponent implements OnInit{
   }
 
 
-  eliminarTarjeta(id: number) {
-    this._tarjetaService.deleteTarjeta(id).subscribe(data => {
-      this.toastr.error('La tarjeta fue eliminada con exito!','Tarjeta eliminada');
-      this.obtenerTarjetas();
+  eliminarFactura(id: number) {
+    this._facturaService.deleteFactura(id).subscribe(data => {
+      this.toastr.error('La Factura fue eliminada con exito!','Factura eliminada');
+      this.obtenerFacturas();
     }, error => {
       console.log(error);
     })
 
   }
 
-  editarTarjeta(tarjeta: any) {
+  editarFactura(factura: any) {
     this.accion = 'Editar';
-    this.id = tarjeta.id;
+    this.id = factura.id;
 
     this.form.patchValue({
-      titular: tarjeta.titular,
-      numeroTarjeta: tarjeta.numeroTarjeta,
-      fechaExpiracion: tarjeta.fechaExpiracion,
-      cvv: tarjeta.cvv
+      fecha: factura.fecha,
+      cliente: factura.cliente,
+      cantidad: factura.cantidad,
+      articulo: factura.articulo
     })
   }
 
