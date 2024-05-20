@@ -15,6 +15,16 @@
                 <div class="card-body">
                     <h5 class="titulo">LISTADO DE FACTURAS</h5>
                     <table class="table">
+                        <thead>
+                            <tr>
+                              <th scope="col">Numero Detalle</th>
+                              <th scope="col">Cantidad</th>
+                              <th scope="col">Valor Total</th>
+                              <th scope="col">Nombre Ciudad</th>
+                              <th scope="col">Nombre Articulo</th>
+                              <th scope="col">Numero Factura</th>
+                            </tr>
+                          </thead>
                         <tbody>
                             <tr *ngFor="let factura of listaFacturas">
                                 <td>{{ factura.numeroDetalle }} </td>
@@ -24,7 +34,7 @@
                                 <td>{{ factura.nombreArticulo }}</td>
                                 <td>{{ factura.numeroFactura }}</td>
                                 <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
-                                <td><i class="fa-solid fa-trash-can text-danger"></i></td>
+                                <td><i (click)="eliminarFactura(factura.numeroDetalle)" class="fa-solid fa-trash-can text-danger"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -49,11 +59,11 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">
                                 <i class="fas fa-user"
-                                    [class.green-icon]="this.form.get('cliente')?.valid"
-                                    [class.red-icon]="this.form.get('cliente')?.invalid && this.form.get('cliente')?.touched">
+                                    [class.green-icon]="this.form.get('clienteId')?.valid"
+                                    [class.red-icon]="this.form.get('clienteId')?.invalid && this.form.get('clienteId')?.touched">
                                 </i>
                             </span>
-                            <input  formControlName="cliente"  type="text" class="form-control" placeholder="Cliente">
+                            <input  formControlName="clienteId"  type="number" class="form-control" placeholder="Cliente">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
@@ -62,16 +72,16 @@
                                     [class.red-icon]="this.form.get('cantidad')?.invalid && this.form.get('cantidad')?.touched">
                                 </i>
                             </span>
-                            <input  formControlName="cantidad" type="text" class="form-control" placeholder="Cantidad">
+                            <input  formControlName="cantidad" type="number" class="form-control" placeholder="Cantidad">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">
                                 <i class="fa-solid fa-truck-fast"
-                                    [class.green-icon]="this.form.get('articulo')?.valid"
-                                    [class.red-icon]="this.form.get('articulo')?.invalid && this.form.get('articulo')?.touched">
+                                    [class.green-icon]="this.form.get('articuloId')?.valid"
+                                    [class.red-icon]="this.form.get('articuloId')?.invalid && this.form.get('articuloId')?.touched">
                                 </i>
                             </span>
-                            <input  formControlName="articulo" type="text" class="form-control" placeholder="Articulo">
+                            <input  formControlName="articuloId" type="number" class="form-control" placeholder="Articulo">
                         </div>
 
                         <div class="d-grid gap-2">
