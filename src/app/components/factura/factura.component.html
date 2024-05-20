@@ -12,7 +12,7 @@
     <div class="row mt-4">
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-body text-center">
+                <div class="card-body">
                     <h5 class="titulo">LISTADO DE FACTURAS</h5>
                     <table class="table">
                         <tbody>
@@ -33,8 +33,52 @@
         </div>
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-body text-center">
+                <div class="card-body">
                     <h5 class="titulo">AGREGAR DETALLE FACTURA</h5>
+
+                    <form [formGroup]="form" (ngSubmit)="guardarFactura()">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-calendar-days"
+                                    [class.green-icon]="this.form.get('fecha')?.valid"
+                                    [class.red-icon]="this.form.get('fecha')?.invalid && this.form.get('fecha')?.touched">
+                                </i>
+                            </span>
+                            <input  formControlName="fecha" maxlength="10" type="text" class="form-control" placeholder="Fecha">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"
+                                    [class.green-icon]="this.form.get('cliente')?.valid"
+                                    [class.red-icon]="this.form.get('cliente')?.invalid && this.form.get('cliente')?.touched">
+                                </i>
+                            </span>
+                            <input  formControlName="cliente"  type="text" class="form-control" placeholder="Cliente">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-star"
+                                    [class.green-icon]="this.form.get('cantidad')?.valid"
+                                    [class.red-icon]="this.form.get('cantidad')?.invalid && this.form.get('cantidad')?.touched">
+                                </i>
+                            </span>
+                            <input  formControlName="cantidad" type="text" class="form-control" placeholder="Cantidad">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-truck-fast"
+                                    [class.green-icon]="this.form.get('articulo')?.valid"
+                                    [class.red-icon]="this.form.get('articulo')?.invalid && this.form.get('articulo')?.touched">
+                                </i>
+                            </span>
+                            <input  formControlName="articulo" type="text" class="form-control" placeholder="Articulo">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-database"></i>&nbsp; Aceptar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
