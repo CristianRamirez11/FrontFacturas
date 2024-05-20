@@ -1,27 +1,45 @@
 # Facturacion
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+Este proyecto fue creado con [Angular CLI](https://github.com/angular/angular-cli) en la version 17.
+
+El proposito de este proyecto es desarrollar el CRUD para la gestión de facturación.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Diseño y Desarrollo:
 
-## Build
+## Modelo de Clases:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Factura
+* Cliente
+* Ciudad
+* DetalleFactura
+* Articulo
 
-## Running unit tests
+## Casos de Uso:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Crear una nueva factura.
+### Leer una factura existente.
+### Actualizar una factura existente.
+### Eliminar una factura existente.
+### Mostrar un resumen de valor vendido por ciudad.
 
-## Running end-to-end tests
+## Arquitectura:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* Frontend: Angular 17.
+* Backend: .NET 8 con Entity Framework Code First.
+* Base de Datos: SQL Server.
 
-## Further help
+## Diagrama de clases de la solución
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Se agrega diagrama de clases en el archivo UMLFacturacion.png
+
+## Informacion adcional
+El proyecto se encuentra alojado en el repositorio de GitHub de [Cristian Ramirez](https://github.com/CristianRamirez11?tab=repositories), tanto el proyecto Front como el de Back se encuentran en proyectos separados, con los nombres de **FrontFacturas** y **BackFacturas**, respectivamente. 
+
+Para descargar el proyecto Front ubicarse en la rama **feature/.factura_angular**
+
+Para decargar el proyecto Back ubicarse en la rama **master**.
