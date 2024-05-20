@@ -6,13 +6,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { FacturaService } from '../../services/factura.service';
 
 type Factura = Array<{ numeroDetalle: string; cantidad: number; valorTotal: number; nombreCiudad: string; nombreArticulo: string; numeroFactura: number}>;
 
 @Component({
   selector: 'app-factura',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BrowserAnimationsModule, ToastrModule],
+  imports: [CommonModule, ReactiveFormsModule, BrowserAnimationsModule, ToastrModule, HttpClientModule],
   templateUrl: './factura.component.html',
   styleUrl: './factura.component.css'
 })
@@ -37,18 +39,19 @@ export class FacturaComponent implements OnInit{
    }
 
   ngOnInit(): void{
-    this.obtenerFacturas();
+    //this.obtenerFacturas();
   }
 
+  /*
   obtenerFacturas() {
     this._facturaService.getListFacturas().subscribe(data => {
       console.log(data);
-      this.listFacturas = data;
+      //this.listFacturas = data;
     }, error => {
       console.log(error);
     })
   }
-
+*/
   guardarFactura() {
 
     const factura: any = {
@@ -86,7 +89,7 @@ export class FacturaComponent implements OnInit{
 
    */
   }
-
+/*
 
   eliminarFactura(id: number) {
     this._facturaService.deleteFactura(id).subscribe(data => {
@@ -110,5 +113,5 @@ export class FacturaComponent implements OnInit{
     })
   }
 
-
+*/
 }
